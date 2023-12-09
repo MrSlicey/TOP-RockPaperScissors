@@ -1,3 +1,7 @@
+// Defines basis of scoring system
+let botScore = 0;
+let playerScore = 0;
+
 // Defines the Computers choice when called upon.
 
 function getComputerChoice() {
@@ -17,32 +21,38 @@ function getComputerChoice() {
 // Determines a winner from the two.
 
 document.getElementById("play").onclick = function () {
-     getComputerChoice()
+  getComputerChoice();
   let playerSelection = document.getElementById("playerSelection").value;
   playerSelection = playerSelection.toLowerCase();
   if (computerSelection == playerSelection) {
     document.getElementById("result").innerHTML = "You tied, Nobody Wins!";
-  }
-  else if (computerSelection == "rock" && playerSelection == "scissors"){
+  } else if (computerSelection == "rock" && playerSelection == "scissors") {
     document.getElementById("result").innerHTML = "Bot chose Rock! You Lose!";
-  }
-  else if (computerSelection == "paper" && playerSelection == "scissors"){
+    botScore + 1;
+  } else if (computerSelection == "paper" && playerSelection == "scissors") {
     document.getElementById("result").innerHTML = "Bot Chose Paper! You win!";
-  }
-  else if (computerSelection == "scissors" && playerSelection == "rock"){
-    document.getElementById("result").innerHTML = "Bot Chose Scissors! You Win!";
-  }
-  else if (computerSelection == "paper" && playerSelection == "rock"){
+    playerScore + 1;
+  } else if (computerSelection == "scissors" && playerSelection == "rock") {
+    document.getElementById("result").innerHTML =
+      "Bot Chose Scissors! You Win!";
+    playerScore + 1;
+  } else if (computerSelection == "paper" && playerSelection == "rock") {
     document.getElementById("result").innerHTML = " Bot Chose Paper! You Lose!";
-  }
-  else if (computerSelection == "rock" && playerSelection == "paper"){
+    botScore + 1;
+  } else if (computerSelection == "rock" && playerSelection == "paper") {
     document.getElementById("result").innerHTML = "Bot Chose Rock! You Win!";
-  }
-  else if (computerSelection == "scissors" && playerSelection == "paper"){
-    document.getElementById("result").innerHTML = " Bot Chose Scissors! You Lose!";
-  }
-  else if(playerSelection !== "rock" || playerSelection !== "scissors" || playerSelection !== "paper"){
-    document.getElementById("result").innerHTML = "You must select either Rock, Paper or Scissors!";
+    playerScore + 1;
+  } else if (computerSelection == "scissors" && playerSelection == "paper") {
+    document.getElementById("result").innerHTML =
+      " Bot Chose Scissors! You Lose!";
+    botScore + 1;
+  } else if (
+    playerSelection !== "rock" ||
+    playerSelection !== "scissors" ||
+    playerSelection !== "paper"
+  ) {
+    document.getElementById("result").innerHTML =
+      "You must select either Rock, Paper or Scissors!";
   }
   console.log(playerSelection, computerSelection);
 };

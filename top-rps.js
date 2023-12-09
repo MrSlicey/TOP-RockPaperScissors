@@ -28,24 +28,24 @@ document.getElementById("play").onclick = function () {
     document.getElementById("result").innerHTML = "You tied, Nobody Wins!";
   } else if (computerSelection == "rock" && playerSelection == "scissors") {
     document.getElementById("result").innerHTML = "Bot chose Rock! You Lose!";
-    botScore + 1;
+    document.getElementById("botScore").innerHTML = botScore += 1;
   } else if (computerSelection == "paper" && playerSelection == "scissors") {
     document.getElementById("result").innerHTML = "Bot Chose Paper! You win!";
-    playerScore + 1;
+    document.getElementById("playerScore").innerHTML = playerScore += 1;
   } else if (computerSelection == "scissors" && playerSelection == "rock") {
     document.getElementById("result").innerHTML =
       "Bot Chose Scissors! You Win!";
-    playerScore + 1;
+    document.getElementById("playerScore").innerHTML = playerScore += 1;
   } else if (computerSelection == "paper" && playerSelection == "rock") {
     document.getElementById("result").innerHTML = " Bot Chose Paper! You Lose!";
-    botScore + 1;
+    document.getElementById("botScore").innerHTML = botScore += 1;
   } else if (computerSelection == "rock" && playerSelection == "paper") {
     document.getElementById("result").innerHTML = "Bot Chose Rock! You Win!";
-    playerScore + 1;
+    document.getElementById("playerScore").innerHTML = playerScore += 1;
   } else if (computerSelection == "scissors" && playerSelection == "paper") {
     document.getElementById("result").innerHTML =
       " Bot Chose Scissors! You Lose!";
-    botScore + 1;
+    document.getElementById("botScore").innerHTML = botScore += 1;
   } else if (
     playerSelection !== "rock" ||
     playerSelection !== "scissors" ||
@@ -53,6 +53,18 @@ document.getElementById("play").onclick = function () {
   ) {
     document.getElementById("result").innerHTML =
       "You must select either Rock, Paper or Scissors!";
+  }
+  if (botScore == 5){
+    document.getElementById("result").innerHTML = "The Bot has reached a score of 5 and has won this match!"
+    console.log("RESETTING SCORES")
+    botScore = 1;
+    playerScore = 1;
+  }
+  else if(playerScore == 5){
+    document.getElementById("result").innerHTML = "The Player has reached a score of 5 and has won this match!"
+    console.log("RESETTING SCORES")
+    botScore = 1;
+    playerScore = 1;
   }
   console.log(playerSelection, computerSelection);
 };
